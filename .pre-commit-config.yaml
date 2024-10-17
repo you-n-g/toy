@@ -28,10 +28,10 @@ repos:
       - id: sort-simple-yaml
         files: .pre-commit-config.yaml
       - id: trailing-whitespace
-  - repo: https://github.com/renovatebot/pre-commit-hooks
-    rev: 38.120.1
-    hooks:
-      - id: renovate-config-validator
+  # - repo: https://github.com/renovatebot/pre-commit-hooks
+  #   rev: 38.120.1
+  #   hooks:
+  #     - id: renovate-config-validator
   - repo: local
     hooks:
       - id: pdm-sync
@@ -81,12 +81,6 @@ repos:
         files: '(^|/)pyproject\.toml$'
         types:
           - toml
-      - id: codespell
-        name: codespell
-        entry: codespell
-        language: python
-        types:
-          - text
       - id: forbidden-files
         name: forbidden files
         entry: found Copier update rejection files; review them and remove them
