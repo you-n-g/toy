@@ -1,0 +1,27 @@
+_commit: v0.0.55
+_src_path: gh:serious-scaffold/ss-python
+author_email: afe.young@gmail.com
+author_name: Xiao Yang
+copyright_holder: ''
+copyright_license: MIT License
+copyright_year: 2022-2024
+coverage_threshold: 0
+default_py: '3.13'
+development_status: Alpha
+max_py: '3.13'
+min_py: '3.9'
+module_name: xytoy
+organization_name: ''
+package_name: xytoy
+platforms:
+- macos
+- ubuntu
+- windows
+project_description: This a toybox of XY
+project_name: Toy of XY
+readme_content: '## Introduction
+
+    This is a toybox of XY'
+repo_name: toy
+repo_namespace: you-n-g
+repo_platform: github
