@@ -2,9 +2,10 @@ import os
 import nbformat
 from nbconvert import HTMLExporter
 from nbconvert.preprocessors import ExecutePreprocessor
+from typing import Any
 
 
-def execute_notebook(ipynb_file, executed_ipynb_file):
+def execute_notebook(ipynb_file: str, executed_ipynb_file: str) -> None:
     with open(ipynb_file, 'r', encoding='utf-8') as f:
         nb = nbformat.read(f, as_version=4)
 
@@ -18,7 +19,7 @@ def execute_notebook(ipynb_file, executed_ipynb_file):
         nbformat.write(nb, f)
 
 
-def py2ipynb(py_file, ipynb_file):
+def py2ipynb(py_file: str, ipynb_file: str) -> None:
     with open(py_file, 'r', encoding='utf-8') as f:
         code = f.read()
 
@@ -38,8 +39,8 @@ def py2ipynb(py_file, ipynb_file):
         nbformat.write(nb, f)
 
 
-def ipynb2html(ipynb_file, html_file):
-    with open(ipynb_file, 'r', encoding='utf-8') as f:
+def ipynb2html(ipynb_file: str, html_file: str) -> None:
+    with open(ipynb_file, 'r', encoding='utf-8') f:
         nb = nbformat.read(f, as_version=4)
 
     html_exporter = HTMLExporter()
