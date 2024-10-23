@@ -40,11 +40,11 @@ def py2ipynb(py_file: str, ipynb_file: str) -> None:
 
 
 def ipynb2html(ipynb_file: str, html_file: str) -> None:
-    with open(ipynb_file, 'r', encoding='utf-8') f:
+    with open(ipynb_file, 'r', encoding='utf-8') as f:
         nb = nbformat.read(f, as_version=4)
 
     html_exporter = HTMLExporter()
-    (body, resources) = html_exporter.from_notebook_node(nb)
+    body, _ = html_exporter.from_notebook_node(nb)
 
     with open(html_file, 'w', encoding='utf-8') as f:
         f.write(body)
