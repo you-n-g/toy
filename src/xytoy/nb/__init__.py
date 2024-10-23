@@ -1,5 +1,4 @@
 import os
-from typing import Any
 
 import nbformat
 from nbconvert import HTMLExporter
@@ -7,6 +6,12 @@ from nbconvert.preprocessors import ExecutePreprocessor
 
 
 def execute_notebook(ipynb_file: str, executed_ipynb_file: str) -> None:
+    """Execute a Jupyter notebook and save the executed notebook.
+
+    Parameters:
+    ipynb_file (str): Path to the input Jupyter notebook file.
+    executed_ipynb_file (str): Path to save the executed Jupyter notebook file.
+    """
     with open(ipynb_file, encoding="utf-8") as f:
         nb = nbformat.read(f, as_version=4)
 
@@ -21,6 +26,12 @@ def execute_notebook(ipynb_file: str, executed_ipynb_file: str) -> None:
 
 
 def py2ipynb(py_file: str, ipynb_file: str) -> None:
+    """Convert a Python script to a Jupyter notebook.
+
+    Parameters:
+    py_file (str): Path to the input Python script file.
+    ipynb_file (str): Path to save the converted Jupyter notebook file.
+    """
     with open(py_file, encoding="utf-8") as f:
         code = f.read()
 
@@ -41,8 +52,7 @@ def py2ipynb(py_file: str, ipynb_file: str) -> None:
 
 
 def ipynb2html(ipynb_file: str, html_file: str) -> None:
-    """
-    Convert a Jupyter notebook to an HTML file.
+    """Convert a Jupyter notebook to an HTML file.
 
     Parameters:
     ipynb_file (str): Path to the input Jupyter notebook file.
@@ -50,12 +60,6 @@ def ipynb2html(ipynb_file: str, html_file: str) -> None:
     """
     with open(ipynb_file, encoding="utf-8") as f:
         nb = nbformat.read(f, as_version=4)
-
-    html_exporter = HTMLExporter()
-    body, _ = html_exporter.from_notebook_node(nb)
-
-    with open(html_file, "w", encoding="utf-8") as f:
-        f.write(body)
 
     html_exporter = HTMLExporter()
     body, _ = html_exporter.from_notebook_node(nb)
