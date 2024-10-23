@@ -1,3 +1,6 @@
+"""
+There are some funcitons to build the workflow around Jupyter notebooks.
+"""
 import os
 
 import nbformat
