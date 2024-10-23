@@ -37,6 +37,8 @@ dynamic = [
 dependencies = [
     "pydantic-settings",
     "typer[all]",
+    "nbformat>=5.10.4",
+    "nbconvert>=7.16.4",
 ]
 urls.documentation = "https://you-n-g.github.io/toy"
 urls.issue = "https://github.com/you-n-g/toy/issues"
@@ -60,6 +62,7 @@ doc = [
 ]
 lint = [
     "mypy",
+    "ruff",
 ]
 test = [
     "coverage",
