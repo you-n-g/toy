@@ -1,9 +1,10 @@
 """Tools to control the workflow of Python program."""
 
 import time
+from typing import Callable, Any
 
 
-def wait_retry(retry_n=3, sleep_time=1):
+def wait_retry(retry_n: int = 3, sleep_time: int = 1) -> Callable[[Callable[..., Any]], Callable[..., Any]]:
     """Decorator to wait and retry the function for retry_n times.
 
     Example:
@@ -27,8 +28,8 @@ def wait_retry(retry_n=3, sleep_time=1):
     2
     """
 
-    def decorator(f):
-        def wrapper(*args, **kwargs):
+    def decorator(f: Callable[..., Any]) -> Callable[..., Any]:
+        def wrapper(*args: Any, **kwargs: Any) -> Any:
             for i in range(retry_n):
                 try:
                     return f(*args, **kwargs)
