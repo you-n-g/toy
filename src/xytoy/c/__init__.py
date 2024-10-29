@@ -1,13 +1,10 @@
-"""
-Tools to control the workflow of Python program
-"""
+"""Tools to control the workflow of Python program"""
 
 import time
 
 
 def wait_retry(retry_n=3, sleep_time=1):
-    """
-    Decorator to wait and retry the function for retry_n times
+    """Decorator to wait and retry the function for retry_n times
 
     Example:
     >>> import time
@@ -31,7 +28,6 @@ def wait_retry(retry_n=3, sleep_time=1):
     """
 
     def decorator(f):
-
         def wrapper(*args, **kwargs):
             for i in range(retry_n):
                 try:
