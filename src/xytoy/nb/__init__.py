@@ -17,7 +17,7 @@ def execute_notebook(ipynb_file: str, executed_ipynb_file: str) -> None:
     with open(ipynb_file, encoding="utf-8") as f:
         nb = nbformat.read(f, as_version=4)
 
-    ep = ExecutePreprocessor(timeout=600)
+    ep = ExecutePreprocessor(timeout=6000)  # TODO: make sure it works and configurable.
     # ep = ExecutePreprocessor(timeout=600, kernel_name='python3')
     ipynb_dir = os.path.dirname(ipynb_file)
     print(ipynb_dir)
