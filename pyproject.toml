@@ -73,6 +73,7 @@ test = [
 fallback_version = "0.0.0"
 
 [tool.ruff]
+line-length = 120
 src = [
     "src",
 ]
@@ -89,6 +90,9 @@ lint.select = [
     "SIM",    # flake8-simplify
     "UP",     # pyupgrade
     "W",      # pycodestyle warning
+]
+lint.ignore = [
+    "S301", # Ignore pickle security warning
 ]
 lint.per-file-ignores."tests/*" = [
     "S101",
