@@ -1,6 +1,7 @@
 """There are some funcitons to build the workflow around Jupyter notebooks."""
 
 import os
+from pathlib import Path
 
 import nbformat
 from nbconvert import HTMLExporter
@@ -68,3 +69,32 @@ def ipynb2html(ipynb_file: str, html_file: str) -> None:
 
     with open(html_file, "w", encoding="utf-8") as f:
         f.write(body)
+
+
+def py2html(py_file: str, html_file: str | None = None) -> str:
+    """Convert a Python script to an HTML file by first converting it to a Jupyter notebook and executing it.
+
+    Parameters:
+    py_file (str): Path to the input Python script file.
+    html_file (str, optional): Path to save the converted HTML file. If not provided, defaults to the same name
+    as the Python file with an .html extension.
+    """
+
+    # Convert paths to Path objects for more robust handling
+    py_path = Path(py_file)
+    ipynb_file = py_path.with_suffix('.py.ipynb')
+    executed_ipynb_file = py_path.with_suffix('.py.exec.ipynb')
+
+    # Convert Python script to Jupyter notebook
+    py2ipynb(str(py_path), str(ipynb_file))
+
+    # Execute the Jupyter notebook
+    execute_notebook(str(ipynb_file), str(executed_ipynb_file))
+
+    # Determine the HTML file path if not provided
+    if html_file is None:
+        html_file = str(py_path.with_suffix('.py.html'))
+
+    # Convert the executed notebook to HTML
+    ipynb2html(str(executed_ipynb_file), html_file)
+    return html_file
