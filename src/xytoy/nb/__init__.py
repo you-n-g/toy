@@ -2,6 +2,7 @@
 
 import os
 from pathlib import Path
+from typing import Union
 
 import nbformat
 from nbconvert import HTMLExporter
@@ -71,7 +72,7 @@ def ipynb2html(ipynb_file: str, html_file: str) -> None:
         f.write(body)
 
 
-def py2html(py_file: str, html_file: str | None = None) -> str:
+def py2html(py_file: str, html_file: Union[str, None] = None) -> str:
     """Convert a Python script to an HTML file by first converting it to a Jupyter notebook and executing it.
 
     Parameters:
